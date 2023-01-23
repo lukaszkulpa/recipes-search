@@ -34,7 +34,7 @@ const Recipes = () => {
 			>
 			{recipes.map((recipe) => {
 				return (
-					<Card sx={{ maxWidth: 345 }}>
+					<Card sx={{ maxWidth: 345 }} key={recipe.id}>
 						<CardMedia
 							component="img"
 							height="150"

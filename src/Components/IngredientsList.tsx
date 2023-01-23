@@ -38,11 +38,8 @@ const IngredientsList = () => {
 
   const ingredientsClick = () => {
     console.log(ingredientsList);
-    let query = ""
-    for (let i = 0; i < ingredientsList.length - 1; i++) {
-      query += ingredientsList[i].ingredientName + ",+";
-    }
-    query += ingredientsList[ingredientsList.length - 1].ingredientName;
+    let newArray = ingredientsList.map((el) => el.ingredientName);
+    let query = newArray.join(",+");
     console.log(query);
   }
 

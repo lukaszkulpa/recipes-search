@@ -5,6 +5,9 @@ import Button from '@mui/material/Button';
 import Ingredient from "../Components/Ingredient";
 import { IIngredient as IIngredient } from "../Interfaces";
 import List from '@mui/material/List';
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
+import Box from "@mui/material/Box";
 
 
 const IngredientsList = () => {
@@ -44,7 +47,16 @@ const IngredientsList = () => {
   }
 
     return (
-      <Grid container item xs={12} sm={4}>
+      <Grid
+        container
+        item
+        xs={12}
+        sm={2}
+        direction="column"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+      >
+        <Grid>
           <TextField
             type="text"
             placeholder="Ingredient..."
@@ -52,11 +64,18 @@ const IngredientsList = () => {
             value={ingredient}
             onChange={handleChange}
          />
-        <Button variant="contained" onClick={addIngredient}>+</Button>
-        <List>{ingredientsList.map((ingredient: IIngredient, key: number) => {
-          return <Ingredient key={key} ingredient={ingredient} deleteIngredient={deleteIngredient} />;
-        })}
-        </List>
+          <IconButton onClick={addIngredient} edge="end" aria-label="delete">
+            <AddIcon />
+          </IconButton>
+        </Grid>
+        <Box
+          sx={{ width: '100%', height: 400, maxWidth: 360, bgcolor: 'background.paper' }}>
+          <List dense>{ingredientsList.map((ingredient: IIngredient, key: number) => {
+            return <Ingredient key={key} ingredient={ingredient} deleteIngredient={deleteIngredient} />;
+          })}
+          </List>    
+        </Box>
+
         <Button variant="contained" onClick={ingredientsClick}>Search for Recipes!</Button>
       </Grid>
       )
